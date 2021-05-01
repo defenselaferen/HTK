@@ -508,8 +508,21 @@ function add_h_class(Htk_elements_h_come, string_text) {
 	}
 }
 
+// check this array
+function HTK_THIS_ARRAY_PRIVATE(var_must_array) {
+	try {
+		let bool_check = (var_must_array[0] == undefined) ? false : true;
+		return bool_check;
+	}
+
+	// if this not array
+	catch(err) {
+		return false;
+	}
+}
+
 // adding element in elemets class_text
-function add_text_class(Htk_elements_h_come, string_text) {
+function add_text_class(Htk_elements_h_come, string_text = "") {
 	if (_CHECK_SIGNAL_HELPER(Htk_elements_h_come, "activate") == 0x001) {
 		Htk_elements_h_come.heap.elements.push({
 			id: Htk_elements_h_come.heap.elements.length,
@@ -522,6 +535,34 @@ function add_text_class(Htk_elements_h_come, string_text) {
 
 		Htk_elements_h_come.heap.elements[Htk_elements_h_come.heap.elements.length - 1]
 			.value.setAttribute("class", Htk_elements_h_come.settings.project);
+	}
+}
+
+// adding element in elemets class_text
+function add_list_class(Htk_elements_h_come, string_text = "", using_attribute = false, array_attribute = [], value_of_array = []) {
+	if (_CHECK_SIGNAL_HELPER(Htk_elements_h_come, "activate") == 0x001) {
+		Htk_elements_h_come.heap.elements.push({
+			id: Htk_elements_h_come.heap.elements.length,
+			value: document.createElement(Htk_elements_h_come.htmlType)
+		});
+
+		let node = document.createTextNode(string_text);
+		Htk_elements_h_come.heap.elements[Htk_elements_h_come.heap.elements.length - 1]
+			.value.appendChild(node);
+
+		Htk_elements_h_come.heap.elements[Htk_elements_h_come.heap.elements.length - 1]
+			.value.setAttribute("class", Htk_elements_h_come.settings.project);
+
+		switch(HTK_THIS_ARRAY_PRIVATE(array_attribute) == HTK_THIS_ARRAY_PRIVATE(value_of_array)) {
+			case false: {
+				throw Error("HTK+ Error Messages: This Not Array");
+				return 0;
+			}
+				break;
+		}
+		switch(array_attribute.length) {
+			
+		}
 	}
 }
 
