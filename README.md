@@ -12,8 +12,14 @@ List syntax functions in HTK +:
 function htk_init(callback_main_function: <Function>);
 ```
 ```javascript
-function htk_settings_root_window(padding = "0": <String>, margin = "0" <String>, overflow_x = "hidden" <String>, overflow_y = "scroll" <String>);
+function htk_settings_root_window(padding = "0": <String>, 
+                                  margin = "0" <String>, 
+                                  overflow_x = "hidden" <String>,
+                                  overflow_y = "scroll" <String>);
 ```
 ```javascript
-function htk_settings_root_window(padding = "0": <String>, margin = "0" <String>, overflow_x = "hidden" <String>, overflow_y = "scroll" <String>);
+function htk_settings_root_window(padding = "0": <String>,
+                                  margin = "0" <String>, 
+                                  overflow_x = "hidden" <String>, 
+                                  overflow_y = "scroll" <String>);
 ```
