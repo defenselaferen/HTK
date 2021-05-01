@@ -210,6 +210,100 @@ class Htk_Elements_H {
 	}
 };
 
+// class for elemets h
+class Htk_Elements_List {
+	constructor(htk_element_new_coming) {
+		this.type = "HtkElements";
+		this.htmlType = "div";
+		this.its_what = "activate";
+		this.settings = {};
+		this.heap = {
+			elements: []
+		};
+
+		try {
+			if (htk_element_new_coming.type == "htk_elemets_new_return") {
+				this.settings.project = htk_element_new_coming.project;
+				this.settings.flags = htk_element_new_coming.flags;
+				switch (htk_element_new_coming.flags) {
+					case H_LI: {
+						this.htmlType = "li";
+					}
+						break;
+					case H_UL: {
+						this.htmlType = "ul";
+					}
+						break;
+					case H_DD: {
+						this.htmlType = "dd";
+					}
+						break;
+					case H_DT: {
+						this.htmlType = "dt";
+					}
+						break;
+					case H_OL: {
+						this.htmlType = "ol";
+					}
+						break;
+					default: {
+						throw Error("Can't know what it's: " + htk_element_new_coming.flags);
+					}
+						break;
+				}
+			}
+		}
+
+		// if the type it's not in declare
+		catch (err) {
+			throw Error("Give the parameter from htk_elements_new function");
+		}
+	}
+};
+
+// class for elemets h
+class Htk_Elements_Text {
+	constructor(htk_element_new_coming) {
+		this.type = "HtkElements";
+		this.htmlType = "div";
+		this.its_what = "activate";
+		this.settings = {};
+		this.heap = {
+			elements: []
+		};
+
+		try {
+			if (htk_element_new_coming.type == "htk_elemets_new_return") {
+				this.settings.project = htk_element_new_coming.project;
+				this.settings.flags = htk_element_new_coming.flags;
+				switch (htk_element_new_coming.flags) {
+					case H_P: {
+						this.htmlType = "p";
+					}
+						break;
+					case H_SPAN: {
+						this.htmlType = "span";
+					}
+						break;
+					case H_STRONG: {
+						this.htmlType = "strong";
+					}
+						break;
+					default: {
+						throw Error("Can't know what it's: " + htk_element_new_coming.flags);
+					}
+						break;
+				}
+			}
+		}
+
+		// if the type it's not in declare
+		catch (err) {
+			throw Error("Give the parameter from htk_elements_new function");
+		}
+	}
+};
+
 // class like make variable in C++
 class HtkApplication {
 	constructor(htk_application_new_coming) {
@@ -413,6 +507,24 @@ function add_h_class(Htk_elements_h_come, string_text) {
 		.value.setAttribute("class", Htk_elements_h_come.settings.project);
 	}
 }
+
+// adding element in elemets class_text
+function add_text_class(Htk_elements_h_come, string_text) {
+	if (_CHECK_SIGNAL_HELPER(Htk_elements_h_come, "activate") == 0x001) {
+		Htk_elements_h_come.heap.elements.push({
+			id: Htk_elements_h_come.heap.elements.length,
+			value: document.createElement(Htk_elements_h_come.htmlType)
+		});
+
+		let node = document.createTextNode(string_text);
+		Htk_elements_h_come.heap.elements[Htk_elements_h_come.heap.elements.length - 1]
+			.value.appendChild(node);
+
+		Htk_elements_h_come.heap.elements[Htk_elements_h_come.heap.elements.length - 1]
+			.value.setAttribute("class", Htk_elements_h_come.settings.project);
+	}
+}
+
 
 // adding list child in window
 function push_window(Htk_window_come, Htk_container_come, number_id_window = 1, number_id_container = 1) {

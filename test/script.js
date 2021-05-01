@@ -13,6 +13,11 @@ function title_one_h1_activate(title_one_h1, settings) {
 	add_h_class(title_one_h1, "HTK+");
 }
 
+// function description_one_activate
+function description_one_activate(description_one, settings) {
+	add_text_class(description_one, "Hello, World");
+}
+
 // function root_window_activate
 function root_window_activate(root_window, settings) {
 	h_application_append(root_window, document.getElementById("root"));
@@ -27,8 +32,12 @@ function root_window_activate(root_window, settings) {
 	let title_one_h1 = new Htk_Elements_H(htk_elements_new("title_one_h1", H_H1));
 	h_signal_connect(title_one_h1, "activate", title_one_h1_activate);
 
+	let description_one = new Htk_Elements_Text(htk_elements_new("description_one", H_P));
+	h_signal_connect(description_one, "activate", description_one_activate);
+
 	push_window(section_one, container_one, 1, 1);
 	push_window(container_one, title_one_h1, 1, 1);
+	push_window(container_one, description_one, 1, 1);
 
 	h_application_child_of(root_window, section_one);
 	h_show_all_application(root_window);
