@@ -1,2 +1,5 @@
 # Log File
 *.log
+
+# manifest form goorm
+goorm.manifest

@@ -16,6 +16,7 @@ function title_one_h1_activate(title_one_h1, settings) {
 // function description_one_activate
 function description_one_activate(description_one, settings) {
 	add_text_class(description_one, "Hello, World");
+	add_text_class(description_one, "Hello, New Program");
 }
 
 // function root_window_activate
@@ -38,6 +39,7 @@ function root_window_activate(root_window, settings) {
 	push_window(section_one, container_one, 1, 1);
 	push_window(container_one, title_one_h1, 1, 1);
 	push_window(container_one, description_one, 1, 1);
+	push_window(container_one, description_one, 1, 2);
 
 	h_application_child_of(root_window, section_one);
 	h_show_all_application(root_window);
